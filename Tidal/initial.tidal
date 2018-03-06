@@ -1,0 +1,12 @@
+d1 $ sound "bd:4"
+d1 $ sound "bd sd h cp mt arpy drum odx bd arpy bass2 feel future"
+d1 $ every 4 (rev) (sound "[bd bd bd, sd cp sd cp, arpy arpy, cp2]") # crush "5" # speed "2"
+d2 $ sound "arpy(5,9)" # n 2
+d1 $ speed "[1 0.5, 1.5 2 3 4]" # sound "arpy"
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+
+d1 $ sound "arpy(5,6)"
+cps 1
+d1 $ sound "arpy*8" # speed (run 8)
+hush
