@@ -1,0 +1,43 @@
+--808 Sound Index
+--0 cowbell
+--1 closed hat
+--2 clav
+--3 clap
+--4 shaker
+--5 rimshot
+
+--set tempo, 120 bpm
+cps (120/60/2)
+
+--1.0 pattern 1
+d1 $ sound "[808:3 808:4]/2 [808:2 808:4 [808:5]]/2]"
+
+--1.1 pattern fill variations
+--every 4 cycles, reverse pattern
+d1 $ every 4 (rev) (sound "[808:3 808:4] [808:2 808:4 [808:5]]]")
+
+--every 4 cycles, speed up pattern 1.5 times
+d1 $ every 4 (fast 1.5) (sound "[808:3 808:4]/2 [808:2 808:4 [808:5]*2]]")
+
+--every 3 cycles, shift pattern forward in time by half a cycle
+d1 $ every 3 (0.5 ~>) $ sound "[808:3 808:4]/2 [808:2 808:4 [808:5]*2]]"
+
+--2.0 sample alterations
+--2.1 pitch down a single octave (half speed)
+d1 $ every 1 (fast 1.5) (sound "[808:3 808:4]/2 [808:2 808:4 [808:5]*2]]" # speed "0.5")
+
+--2.2 pitch down 5 octaves
+d1 $ sound "[808:3 808:4]/2 [808:2 808:4 [808:5]*2]]" # speed "0.2"
+
+--3.0 vanilla house beats
+--3.1 spread sounds across multiple tracks (typical)
+d1 $ every 1 (fast 2) (sound "[808bd:1*2, 808:3 808:1*0.5]") --track 1 2/1 kick/clap
+d2 $ every 1 (fast 2) (sound "[808:4*2 [808:5 808:4]]")
+
+--3.2 another house beat, decomposed as a stack of tracks
+d1 $ stack [sound "808:1(5,8)",
+            sound "808:3(1,4)",
+            sound "808:5(2,6)",
+            sound "808bd:1(1,8)"
+            ]
+hush

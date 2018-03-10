@@ -1,0 +1,39 @@
+--808 Index
+--0 cowbell
+--1 closed hat
+--2 clav
+--3 clap
+--4 shaker
+--5 rimshot
+
+--set tempo, 120 bpm
+cps (120/60/2)
+
+--bracket notation combined with euclidean note composition notation
+--sound(x,y,z) => distribute x elements over y elements alternating at element z
+d1 $ sound "[808:2(5,8,3) [808:4(3,8,4)]]"
+
+--alter the step in which the pattern starts, third param
+d1 $ sound "[808:2(5,8,3) [808:4(3,8,2)]]"
+
+--spread the sequence over multiple cycles, allow for denser packing
+d1 $ sound "[808:2([5,8]*2,2) 808:4(3,8,4) 808bd:1(1,8)]"
+
+--add a house backing beat
+d1 $ sound "[808:2([5,8]/2,2) 808:4(3,8,4)]/2"
+d2 $ sound "[808bd:1*2, 808:3 808:1*0.5]" --2/1 kick/clap house rhythm
+
+--poly rhythm 2:3:2, shifted forwards in time half a cycle every 3
+d1 $ every 3 (0.5 ~>) $ sound "[808:1 808:2, 808:3 808:5 808:1, 808:6, 808:3]"
+
+--polymeter 4/5 => merge 1/4 and 1/5 metered sequences (expand), shited forwards similarly
+d1 $ every 3 (0.5 ~>) $ sound "{808:2 808:4 808:4 808:5, 808:3 808:2 808:3 808:5 808:5}"
+
+--poly rhythm 4/5 => retain 1/4 and 1/5 within the same sequence meter (squash), curtails fifth measure
+d1 $ sound "[808:2 808:4 808:4 808:5, 808:3 808:2 808:3 808:5 808:5]"
+
+--African Rhythm necklaces combined in various ways
+d1 $ every 3 (0.5 ~>) $ sound "[808:4(13,24,5)]/3" --13/24, RN of Aka Pygmies of upper Sangha
+d2 $ every 3 (0.5 ~>) $ sound "[808:2(11,24,5)]/2" --11/24, RN of Aka Pygmies of Central Africa
+
+hush

@@ -1,0 +1,14 @@
+--set tempo, 120 bpm
+cps (120/60/2)
+
+--traverse 12 chromatic notes
+d1 $ up (run 12) # sound "arpy"
+
+--random sample traversal, from samples contained within folder
+d1 $ s "arpy*8" # n (irand 30)
+
+--dsitribute synthe appegiation over 5/9 euclidean
+d2 $ sound "arpy(5,9)" # n 2
+d1 $ speed "[1 0.5, 1.5 2 3 4]" # sound "arpy"
+
+hush
